@@ -1,0 +1,12 @@
+#include <pybind11/pybind11.h>
+#include "formatfuzzer.h"
+
+namespace py = pybind11;
+
+PYBIND11_MODULE(pyff_$format, m) {
+    m.doc() = "pybind11 wrapper for $format format fuzzer"; // optional module docstring
+
+    m.def("generate_random",
+          []() { return py::bytes(generate_random()); },
+          "Generate random $format data by grammar");
+}
